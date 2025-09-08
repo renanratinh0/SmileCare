@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmileCare - Clínica Odontológica de Excelência</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Estilos personalizados e animações */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilo para a barra de rolagem */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-gray-50 text-gray-800">
+
+<!-- Seção do Site Principal (Landing Page) -->
+<div id="main-site">
+    <header class="bg-white/90 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-200">
+        <nav class="container mx-auto px-4 lg:px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" id="home-link" class="text-2xl font-bold tracking-tighter text-gray-900">
+                    Smile<span class="text-blue-600">Care</span>
+                </a>
+
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-gray-600">
+                    <a href="#inicio" class="text-blue-600">Início</a>
+                    <a href="#tratamentos" class="hover:text-blue-600 transition-colors">Tratamentos</a>
+                    <a href="#depoimentos" class="hover:text-blue-600 transition-colors">Depoimentos</a>
+                    <a href="#contato" class="hover:text-blue-600 transition-colors">Contato</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="show-dashboard-btn" class="text-gray-600 hover:text-blue-600" title="Acessar Painel">
+                        <i class="fas fa-user-cog text-xl"></i>
+                    </button>
+                    <a href="#contato"
+                       class="hidden lg:inline-block bg-blue-600 text-white font-bold py-2 px-5 rounded-lg text-sm hover:bg-blue-700 transition-colors">
+                        Agendar Consulta
+                    </a>
+                    <button class="lg:hidden p-2" aria-label="Abrir Menu">
+                        <i class="fa fa-bars text-xl text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-6 py-8 md:py-12">
+        <section id="inicio" class="fade-in mb-16">
+            <!-- Conteúdo da seção Início -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <div class="text-center lg:text-left">
+                    <span class="text-blue-600 font-bold uppercase tracking-wider">CUIDADO E TECNOLOGIA PARA VOCÊ</span>
+                    <h1 class="text-4xl md:text-6xl font-black my-4 leading-tight text-gray-900">
+                        CONQUISTE O SORRISO PERFEITO
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-8">
+                        Nossa clínica combina profissionais experientes com tecnologia de ponta para oferecer o melhor tratamento odontológico para você e sua família.
+                    </p>
+                    <a href="#contato"
+                       class="bg-blue-600 text-white font-bold py-4 px-8 rounded-lg text-lg inline-block transform hover:scale-105 transition-transform">
+                        Agende sua Avaliação <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="overflow-hidden rounded-xl group">
+                    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Paciente feliz com seu sorriso saudável"
+                         class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110">
+                </div>
+            </div>
+        </section>
+
+
+        <section id="tratamentos" class="w-full mb-16">
+            <!-- Conteúdo da seção Tratamentos -->
+            <div>
+                <header class="mb-6 flex items-end justify-between md:mb-8">
+                    <h2 class="text-3xl font-black tracking-tight md:text-4xl">Nossos Tratamentos</h2>
+                    <a href="#" class="text-sm text-gray-500 hover:text-blue-600 transition-colors">Ver todos</a>
+                </header>
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-5 md:grid-rows-2">
+                    <a href="#"
+                       class="group relative block h-full min-h-[30rem] w-full overflow-hidden rounded-2xl shadow-lg md:col-span-2 md:row-span-2">
+                        <img src="https://images.unsplash.com/photo-1609918438269-9a4c5f8fe3a4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Paciente realizando implante dentário"
+                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="relative flex h-full flex-col items-start justify-end p-6">
+                            <h3 class="text-2xl font-black md:text-3xl text-white">Implantes Dentários</h3>
+                        </div>
+                    </a>
+                    <a href="#" class="group relative block h-64 overflow-hidden rounded-2xl shadow-lg md:col-span-2">
+                        <img src="https://images.unsplash.com/photo-1660737217690-15182b43899e?q=80&w=1007&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Sorriso branco após clareamento dental"
+                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="relative flex h-full flex-col items-start justify-end p-6">
+                            <h3 class="text-xl font-black md:text-2xl text-white">Clareamento Dental</h3>
+                        </div>
+                    </a>
+                    <a href="#" class="group relative block h-64 overflow-hidden rounded-2xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1663755489920-5e09f66d011a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Aparelho ortodôntico"
+                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="relative flex h-full flex-col items-start justify-end p-6">
+                            <h3 class="text-xl font-black md:text-2xl text-white">Ortodontia</h3>
+                        </div>
+                    </a>
+                    <a href="#" class="group relative block h-64 overflow-hidden rounded-2xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1684607633080-df59e6874367?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Dentista realizando limpeza dental"
+                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="relative flex h-full flex-col items-start justify-end p-6">
+                            <h3 class="text-xl font-black md:text-2xl text-white">Limpeza e Prevenção</h3>
+                        </div>
+                    </a>
+                    <a href="#" class="group relative block h-64 overflow-hidden rounded-2xl shadow-lg">
+                        <img src="https://plus.unsplash.com/premium_photo-1674998805052-23ea88091da2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Extrações dental"
+                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="relative flex h-full flex-col items-start justify-end p-6">
+                            <h3 class="text-xl font-black md:text-2xl text-white">Extrações</h3>
+                        </div>
+                    </a>
+                    <a href="#" class="group relative block h-64 overflow-hidden rounded-2xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1598531228433-d9f0cb960816?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Aplicação de aparelho dental"
+                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="relative flex h-full flex-col items-start justify-end p-6">
+                            <h3 class="text-xl font-black md:text-2xl text-white">Aparelho</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos" class="w-full py-16 md:py-20">
+            <!-- Conteúdo da seção Depoimentos -->
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <header class="mb-8 text-center">
+                    <h2 class="text-3xl font-black tracking-tight md:text-4xl">O Que Nossos Pacientes Dizem</h2>
+                    <p class="mt-2 text-lg text-gray-600">A confiança e a satisfação de quem cuidou do sorriso conosco.</p>
+                </header>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <img class="w-20 h-20 rounded-full mb-4 object-cover" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de Maria Silva">
+                        <p class="text-gray-600 italic mb-4">"O atendimento foi incrível do início ao fim. Perdi o medo de dentista e hoje tenho um sorriso que sempre sonhei. Recomendo a todos!"</p>
+                        <h5 class="font-bold text-gray-900">Maria S.</h5>
+                        <span class="text-sm text-blue-500">Paciente de Ortodontia</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <img class="w-20 h-20 rounded-full mb-4 object-cover" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de João Pereira">
+                        <p class="text-gray-600 italic mb-4">"Fiz meu clareamento dental na SmileCare e o resultado superou minhas expectativas. Profissionais muito atenciosos e competentes."</p>
+                        <h5 class="font-bold text-gray-900">João P.</h5>
+                        <span class="text-sm text-blue-500">Paciente de Estética</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex flex-col items-center text-center">
+                        <img class="w-20 h-20 rounded-full mb-4 object-cover" src="https://randomuser.me/api/portraits/women/60.jpg" alt="Foto de Ana Costa">
+                        <p class="text-gray-600 italic mb-4">"Coloquei um implante e todo o processo foi muito tranquilo e sem dor. A tecnologia que eles usam faz toda a diferença. Muito satisfeita!"</p>
+                        <h5 class="font-bold text-gray-900">Ana C.</h5>
+                        <span class="text-sm text-blue-500">Paciente de Implante</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato" class="bg-slate-800 text-white">
+        <!-- Conteúdo do Rodapé -->
+        <div class="container px-6 py-12 mx-auto">
+            <div class="flex flex-col items-center text-center">
+                <a href="#" class="text-3xl font-black tracking-tighter">
+                    Smile<span class="text-blue-500">Care</span>
+                </a>
+                <p class="text-gray-400 mt-2 max-w-md">Cuidando do seu sorriso com excelência, tecnologia e um atendimento que você merece.</p>
+                <div class="flex flex-wrap justify-center mt-6 -mx-4">
+                    <a href="#inicio" class="mx-4 text-sm text-gray-300 hover:text-blue-400 transition-colors">Início</a>
+                    <a href="#tratamentos" class="mx-4 text-sm text-gray-300 hover:text-blue-400 transition-colors">Tratamentos</a>
+                    <a href="#depoimentos" class="mx-4 text-sm text-gray-300 hover:text-blue-400 transition-colors">Depoimentos</a>
+                </div>
+            </div>
+
+            <hr class="my-8 border-gray-700">
+
+            <div class="flex flex-col items-center sm:flex-row sm:justify-between">
+                <div class="text-center sm:text-left">
+                    <p class="text-sm text-gray-400">
+                        © <span id="current-year">2025</span> SmileCare . Todos os direitos reservados.
+                    </p>
+                </div>
+
+                <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                    <a href="#" class="text-gray-300 hover:text-green-400 transition-colors text-2xl" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="text-gray-300 hover:text-pink-500 transition-colors text-2xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors text-2xl" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-300 hover:text-red-500 transition-colors text-2xl" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
