@@ -58,7 +58,7 @@
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
     import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-    // CORREÇÃO: Importa 'db' (já inicializado) e 'firebaseConfig'. Não tenta importar 'functions'.
+    // Importa 'db' (já inicializado) e 'firebaseConfig' do caminho correto.
     import { db, firebaseConfig } from '../../firebase-config.js';
 
     const createUserForm = document.getElementById('createUserForm');
@@ -101,7 +101,7 @@
                 alert('Erro: Este e-mail já está cadastrado.');
             } else if (error.code === 'auth/weak-password') {
                 alert('Erro: A senha deve ter no mínimo 6 caracteres.');
-            } else if (error.code === 'permission-denied') {
+            } else if (error.code === 'permission-denied' || error.message.includes('insufficient permissions')) {
                 alert('ERRO DE PERMISSÃO: Verifique suas Regras de Segurança e se você está logado como admin.');
             } else {
                 alert('Ocorreu um erro ao criar o usuário.');
