@@ -78,20 +78,22 @@
     import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
     const loginForm = document.querySelector('form');
+
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // Pega o e-mail e a senha do formulário
         const email = loginForm.email.value;
         const password = loginForm.password.value;
 
+        // Tenta fazer o login com o Firebase
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Login bem-sucedido, redireciona para o painel
-                console.log('Login realizado com sucesso!', userCredential.user);
+                // Se o login for bem-sucedido, redireciona para o painel
                 window.location.href = 'painel.html';
             })
             .catch((error) => {
-                // Trata erros de login
+                // Se der erro, mostra um alerta
                 console.error('Erro no login:', error.message);
                 alert('E-mail ou senha incorretos. Tente novamente.');
             });

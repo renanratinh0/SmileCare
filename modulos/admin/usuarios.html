@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -54,33 +53,37 @@
     </div>
 </main>
 <script type="module">
-    // Importe os serviços que vamos usar
-    import { auth, db, functions } from '../../firebase-config.js';
-    import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-    import { doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+    // Importa as funções necessárias do Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-    const createUserForm = document.getElementById('createUserForm'); // Dê este ID ao seu <form>
+    // CORREÇÃO: Importa 'db' (já inicializado) e 'firebaseConfig'. Não tenta importar 'functions'.
+    import { db, firebaseConfig } from '../../firebase-config.js';
+
+    const createUserForm = document.getElementById('createUserForm');
 
     createUserForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // 1. Pega os dados do formulário
         const nome = createUserForm.nome.value;
         const email = createUserForm.email.value;
         const password = createUserForm.password.value;
         const role = createUserForm.role.value;
 
-        // --- MÁGICA SIMPLIFICADA ACONTECE AQUI ---
+        // **CORREÇÃO: Para evitar que o admin seja deslogado,
+        // criamos uma instância temporária do Firebase só para essa operação.**
+        const tempAppName = 'user-creation-app-' + Date.now();
+        const tempApp = initializeApp(firebaseConfig, tempAppName);
+        const tempAuth = getAuth(tempApp);
 
         try {
-            // ETAPA 1: Criar o usuário no sistema de autenticação (login e senha)
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            // ETAPA 1: Cria o login do novo usuário na instância temporária
+            const userCredential = await createUserWithEmailAndPassword(tempAuth, email, password);
             const newUser = userCredential.user;
 
-            console.log('Usuário criado na autenticação:', newUser.uid);
-
-            // ETAPA 2: Criar o documento do usuário no Firestore com a sua "role"
-            // A nossa regra de segurança vai verificar se QUEM ESTÁ LOGADO AGORA é um Admin
+            // ETAPA 2: Salva os detalhes do novo usuário no Firestore,
+            // usando a permissão do admin que continua logado na sessão principal e o 'db' principal.
             await setDoc(doc(db, "users", newUser.uid), {
                 uid: newUser.uid,
                 nome: nome,
@@ -88,18 +91,20 @@
                 role: role
             });
 
-            alert(`Usuário ${nome} criado com sucesso como ${role}!`);
+            alert(`Usuário "${nome}" foi criado com sucesso!`);
             createUserForm.reset();
 
         } catch (error) {
             console.error("Erro ao criar usuário:", error);
-            // Mensagens de erro mais amigáveis
-            if (error.code == 'auth/email-already-in-use') {
+
+            if (error.code === 'auth/email-already-in-use') {
                 alert('Erro: Este e-mail já está cadastrado.');
-            } else if (error.code == 'auth/weak-password') {
+            } else if (error.code === 'auth/weak-password') {
                 alert('Erro: A senha deve ter no mínimo 6 caracteres.');
+            } else if (error.code === 'permission-denied') {
+                alert('ERRO DE PERMISSÃO: Verifique suas Regras de Segurança e se você está logado como admin.');
             } else {
-                alert('Ocorreu um erro ao criar o usuário: ' + error.message);
+                alert('Ocorreu um erro ao criar o usuário.');
             }
         }
     });
