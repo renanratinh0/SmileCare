@@ -1,111 +1,328 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Clientes - SmileCare</title>
+    <title>Gestão de Pacientes - SmileCare</title>
 
-    <!-- Favicon -->
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
-            rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
-
-<body class="antialiased bg-gray-50 flex items-center justify-center min-h-screen">
-
-<div class="w-full max-w-3xl bg-white shadow-lg rounded-2xl border border-gray-100 p-8">
-    <!-- Logo -->
-    <div class="text-center mb-8">
-        <a href="../index.html" class="text-3xl font-black tracking-tighter text-gray-900">
-            Smile<span class="text-blue-600">Care</span>
+<body class="bg-gray-100 min-h-screen flex">
+<!-- Sidebar -->
+<aside class="w-64 bg-white shadow-md hidden md:block">
+    <div class="p-6 text-center border-b">
+        <h1 class="text-2xl font-bold text-gray-800">Smile<span class="text-blue-600">Care</span></h1>
+    </div>
+    <nav class="p-6 space-y-4">
+        <a href="../painel.html" class="flex items-center gap-2 text-gray-700 hover:text-blue-600">
+            <i class="fa-solid fa-table-columns"></i> Painel
         </a>
-        <p class="text-gray-500 mt-2">Cadastro de novos clientes</p>
+        <a href="CastradoClientes.html" class="flex items-center gap-2 text-blue-600 font-semibold">
+            <i class="fa-solid fa-user-plus"></i> Pacientes
+        </a>
+        <a href="../agendamento/Agendamento.html" class="flex items-center gap-2 text-gray-700 hover:text-blue-600">
+            <i class="fa-solid fa-calendar-plus"></i> Novo Agendamento
+        </a>
+        <a href="../modulos/admin/usuarios.html" class="flex items-center gap-2 text-gray-700 hover:text-blue-600">
+            <i class="fa-solid fa-users"></i> Usuarios
+        </a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600">
+            <i class="fa-solid fa-clock"></i> Consultas
+        </a>
+        <a href="#" class="flex items-center gap-2 text-gray-700 hover:text-blue-600">
+            <i class="fa-solid fa-sack-dollar"></i> Financeiro
+        </a>
+    </nav>
+</aside>
+<!-- Conteúdo principal -->
+<main class="flex-1 p-6">
+    <!-- Header -->
+    <header class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Gestão de Pacientes</h2>
+        <button class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+            <i class="fa-solid fa-right-from-bracket"></i> Sair
+        </button>
+    </header>
+    <!-- Formulário de Cadastro de Paciente -->
+    <div class="bg-white shadow rounded-xl p-6 mt-6">
+        <h3 class="text-lg font-bold mb-4">Cadastrar Novo Paciente</h3>
+        <form id="createPatientForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="md:col-span-2">
+                <label for="nome" class="block text-sm font-medium text-gray-700">Nome Completo</label>
+                                <input type="text" id="nome" required class="mt-1 w-full border border-gray-300 rounded-lg shadow-sm p-2">
+
+            </div>
+            <div>
+                <label for="cpf" class="block text-sm font-medium text-gray-700">CPF</label>
+                <input type="text" id="cpf" placeholder="000.000.000-00" required class="mt-1 w-full border border-gray-300 rounded-lg shadow-sm p-2">
+            </div>
+            <div>
+                <label for="nascimento" class="block text-sm font-medium text-gray-700">Data de Nascimento</label>
+                <input type="date" id="nascimento" required class="mt-1 w-full border border-gray-300 rounded-lg shadow-sm p-2">
+            </div>
+            <div>
+                <label for="telefone" class="block text-sm font-medium text-gray-700">Telefone</label>
+                <input type="tel" id="telefone" placeholder="(00) 00000-0000" required class="mt-1 w-full border border-gray-300 rounded-lg shadow-sm p-2">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
+                <input type="email" id="email" class="mt-1 w-full border border-gray-300 rounded-lg shadow-sm p-2">
+            </div>
+            <div class="md:col-span-2">
+                <label for="endereco" class="block text-sm font-medium text-gray-700">Endereço Completo</label>
+                <input type="text" id="endereco" class="mt-1 w-full border border-gray-300 rounded-lg shadow-sm p-2">
+            </div>
+            <div class="md:col-span-2">
+                <label for="observacoes" class="block text-sm font-medium text-gray-700">Observações</label>
+                <textarea id="observacoes" rows="3" class="mt-1 w-full border border-gray-300 rounded-lg shadow-sm p-2"></textarea>
+            </div>
+            <div class="md:col-span-2 flex justify-end">
+                <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700">
+                    Salvar Cadastro
+                </button>
+            </div>
+        </form>
     </div>
 
-    <!-- Formulário -->
-    <form action="#" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Nome Completo -->
-        <div class="md:col-span-2">
-            <label for="nome" class="block text-sm font-medium text-gray-700">Nome Completo</label>
-            <input type="text" id="nome" name="nome" required
-                   class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+    <!-- Tabela de Pacientes Cadastrados -->
+    <div class="bg-white shadow rounded-xl p-6 mt-8">
+        <h3 class="text-lg font-bold mb-4">Pacientes Cadastrados</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+                <thead>
+                <tr class="bg-gray-100 text-left">
+                    <th class="px-4 py-3 border">Nome</th>
+                    <th class="px-4 py-3 border">CPF</th>
+                    <th class="px-4 py-3 border">Telefone</th>
+                    <th class="px-4 py-3 border text-center">Ações</th>
+                </tr>
+                </thead>
+                <tbody id="patient-list">
+                <!-- Linhas da tabela serão inseridas pelo JavaScript -->
+                </tbody>
+            </table>
         </div>
+    </div>
+</main>
 
-        <!-- CPF -->
-        <div>
-            <label for="cpf" class="block text-sm font-medium text-gray-700">CPF</label>
-            <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required
-                   class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-
-        <!-- Data de Nascimento -->
-        <div>
-            <label for="nascimento" class="block text-sm font-medium text-gray-700">Data de Nascimento</label>
-            <input type="date" id="nascimento" name="nascimento" required
-                   class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-
-        <!-- Telefone -->
-        <div>
-            <label for="telefone" class="block text-sm font-medium text-gray-700">Telefone</label>
-            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required
-                   class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-
-        <!-- Email -->
-        <div>
-            <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
-            <input type="email" id="email" name="email"
-                   class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-
-        <!-- Endereço -->
-        <div class="md:col-span-2">
-            <label for="endereco" class="block text-sm font-medium text-gray-700">Endereço Completo</label>
-            <input type="text" id="endereco" name="endereco"
-                   class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-
-        <!-- Observações -->
-        <div class="md:col-span-2">
-            <label for="observacoes" class="block text-sm font-medium text-gray-700">Observações</label>
-            <textarea id="observacoes" name="observacoes" rows="4"
-                      class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-        </div>
-
-        <!-- Botões -->
-        <div class="md:col-span-2 flex justify-end gap-4">
-            <a href="../index.html"
-               class="px-6 py-3 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors">
-                Cancelar
-            </a>
-            <button type="submit"
-                    class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
-                Salvar Cadastro
-            </button>
-        </div>
-    </form>
+<!-- MODAL DE EDIÇÃO DE PACIENTE -->
+<div id="editPatientModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-2xl">
+        <h3 class="text-lg font-bold mb-6">Editar Paciente</h3>
+        <form id="editPatientForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <input type="hidden" id="editPatientId">
+            <div class="md:col-span-2">
+                <label for="editNome" class="block text-sm font-medium">Nome</label>
+            </div>
+            <div>
+                <label for="editCpf" class="block text-sm font-medium">CPF</label>
+                <input type="text" id="editCpf" required class="mt-1 w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label for="editNascimento" class="block text-sm font-medium">Data de Nascimento</label>
+                <input type="date" id="editNascimento" required class="mt-1 w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label for="editTelefone" class="block text-sm font-medium">Telefone</label>
+                <input type="tel" id="editTelefone" required class="mt-1 w-full p-2 border rounded-lg">
+            </div>
+            <div>
+                <label for="editEmail" class="block text-sm font-medium">E-mail</label>
+                <input type="email" id="editEmail" class="mt-1 w-full p-2 border rounded-lg">
+            </div>
+            <div class="md:col-span-2">
+                <label for="editEndereco" class="block text-sm font-medium">Endereço</label>
+                <input type="text" id="editEndereco" class="mt-1 w-full p-2 border rounded-lg">
+            </div>
+            <div class="md:col-span-2">
+                <label for="editObservacoes" class="block text-sm font-medium">Observações</label>
+                <textarea id="editObservacoes" rows="3" class="mt-1 w-full p-2 border rounded-lg"></textarea>
+            </div>
+            <div class="md:col-span-2 flex justify-end gap-4 mt-4">
+                <button type="button" id="cancelEdit" class="px-6 py-2 border rounded-lg">Cancelar</button>
+                <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg">Salvar</button>
+            </div>
+        </form>
+    </div>
 </div>
 
+<!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
+<div id="deletePatientModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-md text-center">
+        <i class="fa-solid fa-triangle-exclamation text-5xl text-red-500 mb-4"></i>
+        <h3 class="text-lg font-bold">Confirmar Exclusão</h3>
+        <p class="text-gray-600 my-4">Tem certeza que deseja excluir o paciente <strong id="deletePatientName"></strong>?</p>
+        <form id="deletePatientForm">
+            <input type="hidden" id="deletePatientId">
+            <div class="flex justify-center gap-4">
+                <button type="button" id="cancelDelete" class="px-6 py-2 border rounded-lg">Cancelar</button>
+                <button type="submit" class="px-6 py-2 bg-red-600 text-white rounded-lg">Sim, Excluir</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="module">
+    import { db } from '../../firebase-config.js';
+    import { collection, addDoc, onSnapshot, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+    const showNotification = (message, isError = false) => {
+        const notification = document.createElement('div');
+        notification.className = `fixed bottom-5 right-5 p-4 rounded-lg shadow-lg text-white z-50 ${isError ? 'bg-red-500' : 'bg-green-500'}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const createPatientForm = document.getElementById('createPatientForm');
+        const patientListTable = document.getElementById('patient-list').querySelector('tbody') || document.getElementById('patient-list');
+
+        // Edit Modal
+        const editModal = document.getElementById('editPatientModal');
+        const editForm = document.getElementById('editPatientForm');
+        const cancelEditBtn = document.getElementById('cancelEdit');
+
+        // Delete Modal
+        const deleteModal = document.getElementById('deletePatientModal');
+        const deleteForm = document.getElementById('deletePatientForm');
+        const cancelDeleteBtn = document.getElementById('cancelDelete');
+        const deletePatientNameSpan = document.getElementById('deletePatientName');
+
+        // --- CADASTRO DE NOVO PACIENTE ---
+        createPatientForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newPatient = {
+                nome: createPatientForm.nome.value,
+                cpf: createPatientForm.cpf.value,
+                nascimento: createPatientForm.nascimento.value,
+                telefone: createPatientForm.telefone.value,
+                email: createPatientForm.email.value,
+                endereco: createPatientForm.endereco.value,
+                observacoes: createPatientForm.observacoes.value,
+                createdAt: new Date()
+            };
+            try {
+                await addDoc(collection(db, "pacientes"), newPatient);
+                showNotification('Paciente cadastrado com sucesso!');
+                createPatientForm.reset();
+            } catch (error) {
+                console.error("Erro ao cadastrar paciente:", error);
+                showNotification('Erro ao cadastrar paciente.', true);
+            }
+        });
+
+        // --- LISTAGEM DE PACIENTES ---
+        const loadPatients = () => {
+            const patientsCollection = collection(db, "pacientes");
+            onSnapshot(patientsCollection, (snapshot) => {
+                patientListTable.innerHTML = "";
+                if (snapshot.empty) {
+                    patientListTable.innerHTML = '<tr><td colspan="4" class="text-center p-4 text-gray-500">Nenhum paciente cadastrado.</td></tr>';
+                } else {
+                    snapshot.forEach(doc => {
+                        const patient = doc.data();
+                        const row = `
+                            <tr data-id="${doc.id}">
+                                <td class="px-4 py-3 border">${patient.nome}</td>
+                                <td class="px-4 py-3 border">${patient.cpf}</td>
+                                <td class="px-4 py-3 border">${patient.telefone}</td>
+                                <td class="px-4 py-3 border text-center space-x-2">
+                                    <button class="edit-btn px-3 py-1 bg-yellow-500 text-white rounded-lg text-sm">Editar</button>
+                                    <button class="delete-btn px-3 py-1 bg-red-500 text-white rounded-lg text-sm">Excluir</button>
+                                </td>
+                            </tr>
+                        `;
+                        patientListTable.innerHTML += row;
+                    });
+                }
+            });
+        };
+
+        // --- AÇÕES NA TABELA (EDITAR/EXCLUIR) ---
+        patientListTable.addEventListener('click', async (e) => {
+            const target = e.target;
+            const patientRow = target.closest('tr');
+            if (!patientRow) return;
+            const patientId = patientRow.dataset.id;
+
+            if (target.classList.contains('edit-btn')) {
+                const docRef = doc(db, "pacientes", patientId);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    editForm.editPatientId.value = patientId;
+                    editForm.editNome.value = data.nome;
+                    editForm.editCpf.value = data.cpf;
+                    editForm.editNascimento.value = data.nascimento;
+                    editForm.editTelefone.value = data.telefone;
+                    editForm.editEmail.value = data.email;
+                    editForm.editEndereco.value = data.endereco;
+                    editForm.editObservacoes.value = data.observacoes;
+                    editModal.classList.remove('hidden');
+                    editModal.classList.add('flex');
+                }
+            }
+
+            if (target.classList.contains('delete-btn')) {
+                const docRef = doc(db, "pacientes", patientId);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    deletePatientNameSpan.textContent = docSnap.data().nome;
+                    deleteForm.deletePatientId.value = patientId;
+                    deleteModal.classList.remove('hidden');
+                    deleteModal.classList.add('flex');
+                }
+            }
+        });
+
+        // --- LÓGICA DOS MODAIS ---
+        cancelEditBtn.addEventListener('click', () => editModal.classList.add('hidden'));
+        cancelDeleteBtn.addEventListener('click', () => deleteModal.classList.add('hidden'));
+
+        editForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const patientId = editForm.editPatientId.value;
+            const updatedData = {
+                nome: editForm.editNome.value,
+                cpf: editForm.editCpf.value,
+                nascimento: editForm.editNascimento.value,
+                telefone: editForm.editTelefone.value,
+                email: editForm.editEmail.value,
+                endereco: editForm.editEndereco.value,
+                observacoes: editForm.editObservacoes.value,
+            };
+            try {
+                await updateDoc(doc(db, "pacientes", patientId), updatedData);
+                showNotification('Paciente atualizado com sucesso!');
+                editModal.classList.add('hidden');
+            } catch (error) {
+                showNotification('Erro ao atualizar paciente.', true);
+            }
+        });
+
+        deleteForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const patientId = deleteForm.deletePatientId.value;
+            try {
+                await deleteDoc(doc(db, "pacientes", patientId));
+                showNotification('Paciente excluído com sucesso!');
+                deleteModal.classList.add('hidden');
+            } catch (error) {
+                showNotification('Erro ao excluir paciente.', true);
+            }
+        });
+
+        loadPatients();
+    });
+</script>
 </body>
 </html>
